@@ -52,7 +52,7 @@ app.post('/cart',async(req,res)=>{
       name:'New Client',
       address:process.env.USER
     }, // sender address
-      to: "sarl.momacob@gmail.com", // list of receivers
+      to: "djebm2@gmail.com", // list of receivers
       subject: `NEW ORDER from ${phone}`, // Subject line
       text: `Vous avez recu une nouvelle commande:${order},${city}
       appeler ${phone} pour confirmer avec le client `, // plain text body
