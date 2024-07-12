@@ -17,7 +17,7 @@ const Header=()=> {
     const handleScroll=()=>{
     if (window.scrollY > 0 ){
       if(menuOpened){
-        setmenuOpened(false);
+        setmenuOpened(true);
       }
     }
   };
@@ -40,7 +40,7 @@ const Header=()=> {
             <Navbar containerStyles={"hidden xl:flex gap-x-5 xl:gap-x-10 medium-15 rounded-full px-2 py-1"}/>
         </div>*/}
         <div>
-            <Navbar containerStyles={`${menuOpened ? "flex items-start flex-col gap-y-12 fixed top-20 right-8 p-12 bg-white rounded-3xl shadow-md w-64 medium-16 ring-1 ring-slate-900/5 transition-all duration-300 z-50 w-100 h-60 border border-gray-300 overflow-y-scroll p-4 "
+            <Navbar containerStyles={`${menuOpened ? "flex items-start flex-col gap-y-12 fixed top-20 right-8  bg-white rounded-3xl shadow-md w-64  medium-16 ring-1 ring-slate-900/5 transition-all duration-300 z-50  h-80 border border-gray-300 overflow-y-scroll p-2 "
               :"flex items-start flex-col gap-y-12 fixed top-20 p-12 bg-white rounded-3xl shadow-md w-64 medium-16 ring-1 ring-slate-900/5 transition-all duration-300 z-50 -right-[100%] "}`}/>
         </div>
         <div className="flexBetween gap-x-3 sm:gap-x-2 bold-16">

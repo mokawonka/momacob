@@ -19,7 +19,9 @@ const addSlice = createSlice({
     },
     handleDelete(state, action) {
       let id = action.payload;
-      state.cart=state.cart.filter((item)=>item.id !==id);
+      if (id > -1) {
+      state.cart=[...state.cart.slice(1, id),...state.cart.slice(id+0)];
+      }
     },
 
   },
