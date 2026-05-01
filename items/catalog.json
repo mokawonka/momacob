@@ -149,7 +149,7 @@
     "category": "coffrage",
     "price": "1 DA",
     "available": "yes",
-    "image": "planches/boisblanc.png"
+    "image": "planches/boisblanc.jpg"
   },
     {
     "id": "madriers",
@@ -157,7 +157,7 @@
     "category": "coffrage",
     "price": "1 DA",
     "available": "yes",
-    "image": "madriers/boisblanc.png"
+    "image": "madriers/boisblanc.jpg"
   },
    {
     "id": "demi-madriers",
@@ -165,7 +165,7 @@
     "category": "coffrage",
     "price": "1 DA",
     "available": "yes",
-    "image": "demi-madriers/boisblanc.png"
+    "image": "demi-madriers/boisblanc.jpg"
   },
    {
     "id": "chevron",
@@ -173,7 +173,7 @@
     "category": "coffrage",
     "price": "1 DA",
     "available": "yes",
-    "image": "chevron/boisblanc.png"
+    "image": "chevron/boisblanc.jpg"
   },
    {
     "id": "Liteau",
@@ -181,7 +181,7 @@
     "category": "coffrage",
     "price": "1 DA",
     "available": "yes",
-    "image": "liteau/boisblanc.png"
+    "image": "liteau/boisblanc.jpg"
   },
    {
     "id": "fenetres",
@@ -261,7 +261,7 @@
     "category": "poudre",
     "price": "1 DA",
     "available": "yes",
-    "image": "ciment-prompt/ciment.jpeg"
+    "image": "ciment-prompt/ciment.jpg"
   },
        {
     "id": "ciment-blanc",
@@ -269,7 +269,7 @@
     "category": "poudre",
     "price": "1 DA",
     "available": "yes",
-    "image": "ciment-blanc/ciment.jpeg"
+    "image": "ciment-blanc/ciment.jpg"
   },
        {
     "id": "ciment-colle",
@@ -277,7 +277,7 @@
     "category": "poudre",
     "price": "1 DA",
     "available": "yes",
-    "image": "ciment-colle/ciment.jpeg"
+    "image": "ciment-colle/ciment.jpg"
   },
     {
     "id": "platre-fleurus",
@@ -325,7 +325,7 @@
     "category": "sanitaire",
     "price": "1 DA",
     "available": "yes",
-    "image": "siphons-cours/siphon.jpeg"
+    "image": "siphons-cours/siphon.jpg"
   },
    {
     "id": "tuyaux-pvc",
@@ -357,7 +357,7 @@
     "category": "sanitaire",
     "price": "1 DA",
     "available": "yes",
-    "image": "cuvettes-anglaises/sanitaires.jpeg"
+    "image": "cuvettes-anglaises/sanitaires.jpg"
   },
   {
     "id": "cuvettes-turques",
@@ -365,7 +365,7 @@
     "category": "sanitaire",
     "price": "1 DA",
     "available": "yes",
-    "image": "cuvettes-turques/sanitaires.jpeg"
+    "image": "cuvettes-turques/sanitaires.jpg"
   },
   {
     "id": "lavabo-pieds",
@@ -373,7 +373,7 @@
     "category": "sanitaire",
     "price": "1 DA",
     "available": "yes",
-    "image": "lavabo-et-pieds/sanitaires.jpeg"
+    "image": "lavabo-et-pieds/sanitaires.jpg"
   },
    {
     "id": "lave-main",
@@ -381,7 +381,7 @@
     "category": "sanitaire",
     "price": "1 DA",
     "available": "yes",
-    "image": "lave-main/sanitaires.jpeg"
+    "image": "lave-main/sanitaires.jpg"
   },
    {
     "id": "receveur-douche",
@@ -389,7 +389,7 @@
     "category": "sanitaire",
     "price": "1 DA",
     "available": "yes",
-    "image": "receveur-douche/sanitaires.jpeg"
+    "image": "receveur-douche/sanitaires.jpg"
   },
   {
     "id": "eviers-cuisine",
@@ -397,6 +397,6 @@
     "category": "sanitaire",
     "price": "1 DA",
     "available": "yes",
-    "image": "eviers-cuisine/sanitaires.jpeg"
+    "image": "eviers-cuisine/sanitaires.jpg"
   }
 ]
