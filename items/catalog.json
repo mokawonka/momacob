@@ -57,7 +57,7 @@
   },
   {
     "id": "sable-oued-souf",
-    "name": "Sable Bousaada",
+    "name": "Sable Oued Souf",
     "category": "Agrégats",
     "price": "1 DA",
     "available": "yes",
@@ -166,6 +166,14 @@
     "price": "1 DA",
     "available": "yes",
     "image": "demi-madriers/boisblanc.jpg"
+  },
+   {
+    "id": "contre-plaque",
+    "name": "Contre-plaqué",
+    "category": "coffrage",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "contre-plaque/boisblanc.jpg"
   },
    {
     "id": "chevron",
@@ -294,14 +302,6 @@
     "price": "1 DA",
     "available": "yes",
     "image": "platre-ajiba/platre.jpg"
-  },
-     {
-    "id": "roseaux",
-    "name": "Roseaux",
-    "category": "poudre",
-    "price": "1 DA",
-    "available": "yes",
-    "image": "roseaux/platre.jpg"
   },
     {
     "id": "variete-faiences-dalle-de-sol",
