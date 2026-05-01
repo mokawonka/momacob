@@ -1,2 +1,0 @@
-# momacob
-basic ecomerce website

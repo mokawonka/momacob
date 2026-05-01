@@ -1,0 +1,938 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>MOMACOB – Matériaux de Construction en Algérie</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Anton&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --wood-dark:    #3b2314;
+      --wood-mid:     #6b3a1f;
+      --wood-light:   #a0622a;
+      --wood-cream:   #f5ead8;
+      --wood-sand:    #e8d5b0;
+      --wood-amber:   #c87941;
+      --accent:       #d4541a;
+      --accent-light: #f0874a;
+      --text-dark:    #1a0f08;
+      --text-mid:     #4a2c14;
+      --text-light:   #8a6040;
+      --white:        #fdfaf6;
+      --card-bg:      #fdf6ec;
+      --shadow:       rgba(59,35,20,0.18);
+      --font-head:    'Anton', sans-serif;
+      --font-body:    'DM Sans', sans-serif;
+      --font-serif:   'Playfair Display', serif;
+    }
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body { font-family: var(--font-body); background: var(--wood-cream); color: var(--text-dark); min-height: 100vh; overflow-x: hidden; }
+    body::before {
+      content: ''; position: fixed; inset: 0; z-index: -2;
+      background:
+        repeating-linear-gradient(92deg, transparent 0px, transparent 3px, rgba(107,58,31,0.04) 3px, rgba(107,58,31,0.04) 4px),
+        repeating-linear-gradient(88deg, transparent 0px, transparent 7px, rgba(59,35,20,0.03) 7px, rgba(59,35,20,0.03) 8px),
+        linear-gradient(180deg, #f5ead8 0%, #eddfc4 100%);
+      pointer-events: none;
+    }
+
+    /* NAVBAR */
+    .navbar { position:fixed; top:0; left:0; right:0; z-index:1000; background:var(--wood-dark); border-bottom:3px solid var(--wood-amber); padding:0 2rem; display:flex; align-items:center; justify-content:space-between; height:70px; box-shadow:0 4px 24px var(--shadow); }
+    .nav-logo { font-family:var(--font-head); font-size:1.8rem; color:var(--wood-sand); letter-spacing:2px; text-decoration:none; display:flex; align-items:center; gap:10px; }
+    .nav-logo span { color:var(--accent-light); }
+    .nav-links { display:flex; gap:2rem; align-items:center; list-style:none; }
+    .nav-links a { color:var(--wood-sand); text-decoration:none; font-size:.85rem; font-weight:500; letter-spacing:1px; text-transform:uppercase; transition:color .2s; }
+    .nav-links a:hover { color:var(--accent-light); }
+    .cart-btn { background:var(--accent); color:white; border:none; cursor:pointer; padding:.5rem 1.2rem; border-radius:4px; font-family:var(--font-head); font-size:.95rem; letter-spacing:1px; display:flex; align-items:center; gap:8px; transition:background .2s, transform .15s; }
+    .cart-btn:hover { background:var(--accent-light); transform:translateY(-1px); }
+    .cart-count-badge { background:var(--wood-sand); color:var(--wood-dark); border-radius:50%; width:20px; height:20px; font-size:.7rem; font-weight:700; display:flex; align-items:center; justify-content:center; font-family:var(--font-body); }
+    .hamburger { display:none; flex-direction:column; gap:5px; cursor:pointer; background:none; border:none; padding:4px; }
+    .hamburger span { display:block; width:24px; height:2px; background:var(--wood-sand); border-radius:2px; transition:all .3s; }
+
+    /* HERO */
+    .hero { min-height:100vh; display:flex; flex-direction:column; align-items:center; justify-content:center; text-align:center; padding:6rem 2rem 4rem; position:relative; overflow:hidden; }
+    .hero-bg { position:absolute; inset:0; z-index:-1; background: linear-gradient(to bottom, rgba(59,35,20,.75) 0%, rgba(59,35,20,.45) 60%, rgba(245,234,216,0) 100%), url('https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1600&q=80') center/cover no-repeat; }
+    .hero-eyebrow { font-family:var(--font-body); font-size:.85rem; font-weight:500; letter-spacing:4px; text-transform:uppercase; color:var(--wood-amber); background:rgba(59,35,20,.5); padding:.4rem 1.2rem; border-radius:2px; margin-bottom:1.5rem; animation:fadeUp .8s ease both; }
+    .hero h1 { font-family:var(--font-head); font-size:clamp(3rem,9vw,7rem); color:var(--white); line-height:.95; letter-spacing:2px; text-shadow:0 4px 30px rgba(0,0,0,.4); animation:fadeUp .8s .1s ease both; }
+    .hero h1 span { color:var(--accent-light); }
+    .hero-sub { font-family:var(--font-serif); font-style:italic; font-size:clamp(1rem,2.5vw,1.4rem); color:var(--wood-sand); margin-top:1.2rem; max-width:600px; animation:fadeUp .8s .2s ease both; }
+    .hero-ctas { display:flex; gap:1rem; margin-top:2.5rem; flex-wrap:wrap; justify-content:center; animation:fadeUp .8s .3s ease both; }
+    .btn-primary { background:var(--accent); color:white; padding:.9rem 2.2rem; border:none; border-radius:4px; font-family:var(--font-head); font-size:1rem; letter-spacing:2px; cursor:pointer; text-decoration:none; transition:background .2s, transform .15s, box-shadow .2s; box-shadow:0 4px 20px rgba(212,84,26,.4); display:inline-block; }
+    .btn-primary:hover { background:var(--accent-light); transform:translateY(-2px); box-shadow:0 8px 28px rgba(212,84,26,.45); }
+    .btn-outline { background:transparent; color:var(--white); padding:.9rem 2.2rem; border:2px solid rgba(255,255,255,.6); border-radius:4px; font-family:var(--font-head); font-size:1rem; letter-spacing:2px; cursor:pointer; text-decoration:none; transition:all .2s; display:inline-block; }
+    .btn-outline:hover { border-color:var(--wood-sand); color:var(--wood-sand); transform:translateY(-2px); }
+    .hero-scroll { position:absolute; bottom:2rem; left:50%; transform:translateX(-50%); display:flex; flex-direction:column; align-items:center; gap:6px; color:var(--wood-sand); font-size:.7rem; letter-spacing:2px; text-transform:uppercase; animation:bounce 2s infinite; }
+    .hero-scroll svg { width:20px; }
+
+    /* STATS */
+    .stats-band { background:var(--wood-dark); border-top:3px solid var(--wood-amber); border-bottom:3px solid var(--wood-amber); padding:2rem 4rem; display:grid; grid-template-columns:repeat(4,1fr); gap:1rem; }
+    .stat-item { text-align:center; }
+    .stat-num { font-family:var(--font-head); font-size:2.2rem; color:var(--accent-light); letter-spacing:2px; }
+    .stat-label { font-size:.75rem; color:var(--wood-sand); letter-spacing:2px; text-transform:uppercase; margin-top:2px; }
+
+    /* SECTION */
+    section { padding:5rem 2rem; }
+    .section-label { font-size:.75rem; font-weight:500; letter-spacing:4px; text-transform:uppercase; color:var(--accent); margin-bottom:.5rem; }
+    .section-title { font-family:var(--font-head); font-size:clamp(2rem,5vw,3.5rem); color:var(--wood-dark); line-height:1; letter-spacing:1px; }
+    .section-sub { font-family:var(--font-serif); font-style:italic; color:var(--text-light); font-size:1.1rem; margin-top:.5rem; max-width:540px; }
+    .section-head { margin-bottom:3rem; }
+
+    /* CATALOGUE */
+    #catalogue { background:var(--white); }
+    .catalogue-container { max-width:1280px; margin:0 auto; }
+    .cat-tabs { display:flex; gap:.5rem; flex-wrap:wrap; margin-bottom:2.5rem; }
+    .cat-tab { padding:.5rem 1.2rem; border:2px solid var(--wood-light); border-radius:50px; background:transparent; color:var(--wood-mid); font-family:var(--font-body); font-size:.85rem; font-weight:500; cursor:pointer; transition:all .2s; letter-spacing:.5px; }
+    .cat-tab:hover, .cat-tab.active { background:var(--wood-dark); border-color:var(--wood-dark); color:var(--wood-sand); }
+    .products-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.5rem; }
+    .product-card { background:var(--card-bg); border-radius:8px; overflow:hidden; border:1px solid rgba(107,58,31,.12); box-shadow:0 2px 12px var(--shadow); transition:transform .25s, box-shadow .25s; display:flex; flex-direction:column; animation:fadeUp .5s ease both; }
+    .product-card:hover { transform:translateY(-5px); box-shadow:0 10px 32px var(--shadow); }
+    .product-img-wrap { position:relative; height:200px; overflow:hidden; background:var(--wood-sand); }
+    .product-img-wrap img { width:100%; height:100%; object-fit:cover; transition:transform .4s; }
+    .product-card:hover .product-img-wrap img { transform:scale(1.06); }
+    .product-category-badge { position:absolute; top:10px; left:10px; background:var(--wood-dark); color:var(--wood-sand); font-size:.65rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; padding:3px 10px; border-radius:2px; }
+    .unavailable-overlay { position:absolute; inset:0; background:rgba(59,35,20,.55); display:flex; align-items:center; justify-content:center; font-family:var(--font-head); font-size:1.1rem; color:white; letter-spacing:2px; }
+    .product-body { padding:1.2rem 1.3rem; flex:1; display:flex; flex-direction:column; gap:.5rem; }
+    .product-name { font-family:var(--font-head); font-size:1.05rem; letter-spacing:.5px; color:var(--wood-dark); }
+    .product-price { font-size:1.3rem; font-weight:700; color:var(--accent); font-family:var(--font-body); }
+    .product-add-btn { margin-top:auto; background:var(--wood-dark); color:var(--wood-sand); border:none; border-radius:4px; padding:.7rem; font-family:var(--font-head); font-size:.85rem; letter-spacing:1.5px; cursor:pointer; transition:background .2s; width:100%; }
+    .product-add-btn:hover:not(:disabled) { background:var(--accent); }
+    .product-add-btn:disabled { opacity:.4; cursor:not-allowed; }
+    .skeleton-grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(260px,1fr)); gap:1.5rem; }
+    .skeleton-card { border-radius:8px; height:320px; background:linear-gradient(90deg,#e8d5b0 25%,#f0e0bc 50%,#e8d5b0 75%); background-size:200% 100%; animation:shimmer 1.5s infinite linear; }
+    .catalogue-status { text-align:center; padding:4rem 2rem; color:var(--text-light); }
+    .catalogue-status h3 { font-family:var(--font-head); font-size:1.5rem; color:var(--wood-mid); margin-bottom:.5rem; }
+
+    /* ABOUT */
+    #apropos { background:linear-gradient(135deg, var(--wood-dark) 0%, var(--wood-mid) 100%); }
+    .about-grid { max-width:1100px; margin:0 auto; display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center; }
+    .about-img-col { position:relative; }
+    .about-img { width:100%; border-radius:8px; aspect-ratio:4/3; object-fit:cover; box-shadow:12px 12px 0 var(--wood-amber); }
+    .about-badge { position:absolute; bottom:-20px; right:-20px; background:var(--accent); color:white; padding:1.2rem 1.5rem; border-radius:6px; text-align:center; font-family:var(--font-head); font-size:1.8rem; line-height:1; box-shadow:4px 4px 0 var(--wood-dark); }
+    .about-badge small { display:block; font-family:var(--font-body); font-size:.7rem; font-weight:400; letter-spacing:2px; margin-top:4px; }
+    .about-text-col .section-title { color:var(--wood-sand); }
+    .about-text-col .section-label { color:var(--wood-amber); }
+    .about-text-col .section-sub { color:rgba(245,234,216,.75); }
+    .about-text-col p { color:rgba(245,234,216,.85); line-height:1.8; margin-top:1.2rem; font-size:.95rem; }
+    .features-list { margin-top:2rem; display:flex; flex-direction:column; gap:1rem; }
+    .feature-item { display:flex; align-items:flex-start; gap:12px; }
+    .feature-icon { width:40px; height:40px; flex-shrink:0; background:var(--wood-amber); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; }
+    .feature-item h4 { font-family:var(--font-head); color:var(--wood-sand); font-size:.95rem; letter-spacing:.5px; }
+    .feature-item p { color:rgba(245,234,216,.7); font-size:.85rem; margin-top:2px; }
+
+    /* CONTACT */
+    #contact { background:var(--card-bg); }
+    .contact-container { max-width:1100px; margin:0 auto; }
+    .contact-grid { display:grid; grid-template-columns:1fr 1fr; gap:3rem; }
+    .contact-info-card { background:var(--wood-dark); border-radius:8px; padding:2.5rem; color:var(--wood-sand); }
+    .contact-info-card h3 { font-family:var(--font-head); font-size:1.5rem; letter-spacing:1px; margin-bottom:2rem; border-bottom:2px solid var(--wood-amber); padding-bottom:1rem; }
+    .contact-row { display:flex; align-items:flex-start; gap:14px; margin-bottom:1.5rem; }
+    .contact-icon { width:42px; height:42px; flex-shrink:0; background:var(--wood-amber); border-radius:6px; display:flex; align-items:center; justify-content:center; font-size:1.2rem; }
+    .contact-row h4 { font-size:.7rem; letter-spacing:2px; text-transform:uppercase; color:var(--wood-amber); margin-bottom:4px; }
+    .contact-row p, .contact-row a { color:var(--wood-sand); font-size:.95rem; text-decoration:none; }
+    .contact-row a:hover { color:var(--accent-light); }
+    .contact-form-card { background:white; border-radius:8px; padding:2.5rem; border:1px solid rgba(107,58,31,.12); }
+    .contact-form-card h3 { font-family:var(--font-head); font-size:1.4rem; color:var(--wood-dark); margin-bottom:1.5rem; letter-spacing:1px; }
+    .form-group { margin-bottom:1.2rem; }
+    .form-group label { display:block; font-size:.75rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-light); margin-bottom:6px; }
+    .form-group input, .form-group textarea { width:100%; padding:.75rem 1rem; border:2px solid var(--wood-sand); border-radius:4px; font-family:var(--font-body); font-size:.9rem; color:var(--text-dark); background:var(--card-bg); transition:border-color .2s; }
+    .form-group input:focus, .form-group textarea:focus { outline:none; border-color:var(--wood-amber); }
+    .form-group textarea { resize:vertical; min-height:100px; }
+
+    /* FOOTER */
+    footer { background:#200e05; color:var(--wood-sand); padding:3rem 2rem 1.5rem; text-align:center; border-top:3px solid var(--wood-amber); }
+    .footer-logo { font-family:var(--font-head); font-size:2rem; color:var(--wood-sand); letter-spacing:3px; }
+    .footer-logo span { color:var(--accent-light); }
+    .footer-tagline { font-family:var(--font-serif); font-style:italic; color:var(--text-light); margin-top:.3rem; font-size:.9rem; }
+    .footer-links { display:flex; justify-content:center; gap:2rem; flex-wrap:wrap; margin:1.5rem 0; list-style:none; }
+    .footer-links a { color:var(--wood-sand); text-decoration:none; font-size:.8rem; letter-spacing:1px; text-transform:uppercase; opacity:.75; transition:opacity .2s; }
+    .footer-links a:hover { opacity:1; color:var(--accent-light); }
+    .footer-divider { height:1px; background:rgba(160,98,42,.2); margin:1.5rem auto; max-width:400px; }
+    .footer-copy { font-size:.75rem; opacity:.5; }
+
+    /* CART */
+    .cart-overlay { position:fixed; inset:0; z-index:2000; background:rgba(20,8,2,.65); backdrop-filter:blur(3px); opacity:0; pointer-events:none; transition:opacity .3s; }
+    .cart-overlay.open { opacity:1; pointer-events:all; }
+    .cart-drawer { position:fixed; top:0; right:0; bottom:0; width:min(480px,100vw); background:var(--white); z-index:2100; transform:translateX(100%); transition:transform .35s cubic-bezier(.4,0,.2,1); display:flex; flex-direction:column; box-shadow:-8px 0 40px rgba(0,0,0,.25); }
+    .cart-drawer.open { transform:translateX(0); }
+    .cart-header { background:var(--wood-dark); color:var(--wood-sand); padding:1.2rem 1.5rem; display:flex; align-items:center; justify-content:space-between; border-bottom:2px solid var(--wood-amber); }
+    .cart-header h2 { font-family:var(--font-head); font-size:1.3rem; letter-spacing:2px; }
+    .cart-close { background:none; border:none; cursor:pointer; color:var(--wood-sand); font-size:1.5rem; display:flex; align-items:center; transition:color .2s; }
+    .cart-close:hover { color:var(--accent-light); }
+    .cart-items { flex:1; overflow-y:auto; padding:1rem 1.5rem; }
+    .cart-empty { text-align:center; padding:3rem 1rem; color:var(--text-light); }
+    .cart-empty svg { opacity:.3; margin-bottom:1rem; }
+    .cart-empty p { font-family:var(--font-serif); font-style:italic; font-size:1.1rem; }
+    .cart-item { display:grid; grid-template-columns:70px 1fr auto; gap:12px; align-items:center; padding:1rem 0; border-bottom:1px solid var(--wood-sand); }
+    .cart-item img { width:70px; height:70px; object-fit:cover; border-radius:6px; border:2px solid var(--wood-sand); }
+    .cart-item-info h4 { font-family:var(--font-head); font-size:.9rem; color:var(--wood-dark); letter-spacing:.5px; }
+    .cart-item-info .cat { font-size:.7rem; color:var(--text-light); text-transform:uppercase; letter-spacing:1px; margin-top:2px; }
+    .cart-item-controls { display:flex; align-items:center; gap:8px; margin-top:8px; }
+    .qty-btn { width:26px; height:26px; background:var(--wood-sand); border:none; border-radius:4px; font-size:1rem; font-weight:700; color:var(--wood-dark); cursor:pointer; display:flex; align-items:center; justify-content:center; transition:background .15s; }
+    .qty-btn:hover { background:var(--wood-amber); color:white; }
+    .qty-num { font-size:.9rem; font-weight:600; min-width:20px; text-align:center; }
+    .cart-item-price { font-family:var(--font-head); font-size:.95rem; color:var(--accent); white-space:nowrap; text-align:right; }
+    .cart-item-remove { background:none; border:none; cursor:pointer; color:var(--text-light); font-size:1.1rem; display:flex; align-items:center; transition:color .15s; margin-top:4px; }
+    .cart-item-remove:hover { color:var(--accent); }
+    .cart-footer { padding:1.2rem 1.5rem; border-top:2px solid var(--wood-sand); background:var(--card-bg); }
+    .cart-total { display:flex; justify-content:space-between; align-items:center; margin-bottom:1rem; }
+    .cart-total span { font-size:.85rem; font-weight:500; color:var(--text-light); text-transform:uppercase; letter-spacing:1px; }
+    .cart-total strong { font-family:var(--font-head); font-size:1.5rem; color:var(--accent); }
+    .cart-order-btn { width:100%; background:var(--accent); color:white; border:none; border-radius:4px; padding:1rem; font-family:var(--font-head); font-size:1.05rem; letter-spacing:2px; cursor:pointer; transition:background .2s; }
+    .cart-order-btn:hover { background:var(--accent-light); }
+    .cart-order-btn:disabled { opacity:.4; cursor:not-allowed; }
+
+    /* MODAL */
+    .modal-overlay { position:fixed; inset:0; z-index:3000; background:rgba(20,8,2,.8); backdrop-filter:blur(4px); display:none; align-items:center; justify-content:center; padding:1rem; }
+    .modal-overlay.open { display:flex; }
+    .modal { background:var(--white); border-radius:10px; width:min(520px,100%); max-height:90vh; overflow-y:auto; box-shadow:0 20px 60px rgba(0,0,0,.4); animation:fadeUp .3s ease; }
+    .modal-header { background:var(--wood-dark); color:var(--wood-sand); padding:1.5rem 2rem; display:flex; align-items:center; justify-content:space-between; position:sticky; top:0; z-index:1; border-radius:10px 10px 0 0; }
+    .modal-header h2 { font-family:var(--font-head); font-size:1.3rem; letter-spacing:2px; }
+    .modal-body { padding:2rem; }
+    .modal-body > p { color:var(--text-mid); line-height:1.7; margin-bottom:1rem; }
+    .modal-order-summary { background:var(--card-bg); border-radius:6px; border:1px solid var(--wood-sand); padding:1.2rem; margin-bottom:1.5rem; }
+    .modal-order-summary h4 { font-family:var(--font-head); font-size:.85rem; letter-spacing:1.5px; color:var(--wood-mid); margin-bottom:.8rem; text-transform:uppercase; }
+    .modal-order-item { display:flex; justify-content:space-between; font-size:.88rem; padding:4px 0; border-bottom:1px solid var(--wood-sand); color:var(--text-mid); }
+    .modal-order-item:last-child { border:none; }
+    .modal-total { display:flex; justify-content:space-between; font-family:var(--font-head); font-size:1rem; color:var(--accent); margin-top:8px; }
+    .modal-form-group { margin-bottom:1rem; }
+    .modal-form-group label { display:block; font-size:.72rem; font-weight:500; letter-spacing:1.5px; text-transform:uppercase; color:var(--text-light); margin-bottom:5px; }
+    .modal-form-group input, .modal-form-group textarea { width:100%; padding:.7rem 1rem; border:2px solid var(--wood-sand); border-radius:4px; font-family:var(--font-body); font-size:.9rem; color:var(--text-dark); background:var(--card-bg); transition:border-color .2s; }
+    .modal-form-group input:focus, .modal-form-group textarea:focus { outline:none; border-color:var(--wood-amber); }
+    .modal-form-group textarea { resize:vertical; min-height:80px; }
+    .modal-actions { display:flex; gap:1rem; margin-top:1.5rem; }
+    .modal-actions .btn-primary { flex:1; text-align:center; border:none; letter-spacing:1.5px; }
+    .btn-cancel { padding:.9rem 1.5rem; border:2px solid var(--wood-sand); border-radius:4px; background:none; color:var(--text-light); font-family:var(--font-head); font-size:.9rem; letter-spacing:1px; cursor:pointer; transition:all .2s; }
+    .btn-cancel:hover { border-color:var(--wood-mid); color:var(--wood-mid); }
+
+    /* MODAL STATES */
+    .sending-state { text-align:center; padding:3rem 2rem; }
+    .send-spinner { width:48px; height:48px; border:4px solid var(--wood-sand); border-top-color:var(--accent); border-radius:50%; animation:spin .8s linear infinite; margin:0 auto 1.2rem; }
+    .sending-state p { color:var(--text-mid); font-family:var(--font-serif); font-style:italic; font-size:1.05rem; }
+
+    .order-success { text-align:center; padding:1rem; }
+    .order-success .success-icon { font-size:4rem; margin-bottom:1rem; }
+    .order-success h3 { font-family:var(--font-head); font-size:1.5rem; color:var(--wood-dark); letter-spacing:1px; margin-bottom:.8rem; }
+    .order-success p { color:var(--text-mid); line-height:1.7; }
+    .detail-box { background:var(--card-bg); border:1px solid var(--wood-sand); border-radius:6px; padding:1rem 1.2rem; margin:1rem 0; text-align:left; font-size:.88rem; color:var(--text-mid); line-height:1.8; }
+    .call-btn { display:inline-flex; align-items:center; gap:10px; background:var(--accent); color:white; padding:.9rem 2rem; border-radius:6px; font-family:var(--font-head); font-size:1rem; letter-spacing:1.5px; text-decoration:none; margin-top:1.2rem; transition:background .2s; }
+    .call-btn:hover { background:var(--accent-light); }
+
+    .order-error { text-align:center; padding:1rem; }
+    .order-error .error-icon { font-size:3rem; margin-bottom:1rem; }
+    .order-error h3 { font-family:var(--font-head); font-size:1.3rem; color:var(--wood-dark); margin-bottom:.8rem; }
+    .order-error p { color:var(--text-mid); line-height:1.7; font-size:.9rem; }
+    .error-note { background:#fff3cd; border:1px solid #ffc107; border-radius:6px; padding:.8rem 1rem; margin-top:1rem; font-size:.82rem; color:#7a5c00; text-align:left; line-height:1.7; }
+    .error-note code { background:rgba(0,0,0,.08); padding:1px 5px; border-radius:3px; font-size:.8rem; }
+
+    /* TOAST */
+    .toast { position:fixed; bottom:2rem; right:2rem; background:var(--wood-dark); color:var(--wood-sand); padding:1rem 1.5rem; border-radius:6px; border-left:4px solid var(--wood-amber); font-size:.9rem; font-weight:500; z-index:9999; box-shadow:0 8px 24px rgba(0,0,0,.3); transform:translateX(200%); transition:transform .35s cubic-bezier(.4,0,.2,1); }
+    .toast.show { transform:translateX(0); }
+
+    /* ANIMATIONS */
+    @keyframes fadeUp { from { opacity:0; transform:translateY(24px); } to { opacity:1; transform:translateY(0); } }
+    @keyframes shimmer { from { background-position:200% 0; } to { background-position:-200% 0; } }
+    @keyframes bounce { 0%,100% { transform:translateX(-50%) translateY(0); } 50% { transform:translateX(-50%) translateY(-8px); } }
+    @keyframes spin { to { transform:rotate(360deg); } }
+
+    /* RESPONSIVE */
+    @media (max-width:900px) {
+      .stats-band { grid-template-columns:repeat(2,1fr); padding:2rem; }
+      .about-grid { grid-template-columns:1fr; gap:2.5rem; }
+      .about-badge { bottom:10px; right:10px; }
+      .contact-grid { grid-template-columns:1fr; }
+      .nav-links { display:none; }
+      .hamburger { display:flex; }
+      .nav-links.mobile-open { display:flex; flex-direction:column; position:fixed; top:70px; left:0; right:0; background:var(--wood-dark); padding:1rem 2rem 2rem; gap:1rem; border-bottom:2px solid var(--wood-amber); z-index:999; }
+    }
+    @media (max-width:500px) {
+      .stats-band { grid-template-columns:1fr 1fr; }
+      .hero h1 { font-size:2.5rem; }
+      .cart-drawer { width:100vw; }
+      .modal-actions { flex-direction:column; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAVBAR -->
+<nav class="navbar">
+  <a href="#" class="nav-logo">MOMA<span>COB</span></a>
+  <ul class="nav-links" id="navLinks">
+    <li><a href="#catalogue">Catalogue</a></li>
+    <li><a href="#apropos">À Propos</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li>
+      <button class="cart-btn" onclick="openCart()">
+        🛒 Panier
+        <span class="cart-count-badge" id="cartBadge">0</span>
+      </button>
+    </li>
+  </ul>
+  <button class="hamburger" id="hamburger" onclick="toggleMobileNav()" aria-label="Menu">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-bg"></div>
+  <p class="hero-eyebrow">🇩🇿 Fournisseur Algérien de Confiance</p>
+  <h1>MATÉRIAUX<br><span>DE QUALITÉ</span></h1>
+  <p class="hero-sub">Votre partenaire de construction en Algérie — béton, brique, bois, acier et bien plus, livrés avec expertise.</p>
+  <div class="hero-ctas">
+    <a href="#catalogue" class="btn-primary">Voir le Catalogue</a>
+    <a href="tel:0798883266" class="btn-outline">📞 Nous Appeler</a>
+  </div>
+  <div class="hero-scroll">
+    <span>Défiler</span>
+    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 9l-7 7-7-7"/></svg>
+  </div>
+</section>
+
+<!-- STATS -->
+<div class="stats-band">
+  <div class="stat-item"><div class="stat-num">100+</div><div class="stat-label">Produits en Stock</div></div>
+  <div class="stat-item"><div class="stat-num">40+</div><div class="stat-label">Années d'Expérience</div></div>
+  <div class="stat-item"><div class="stat-num">48</div><div class="stat-label">Wilayas Servies</div></div>
+  <div class="stat-item"><div class="stat-num">100%</div><div class="stat-label">Qualité Garantie</div></div>
+</div>
+
+<!-- CATALOGUE -->
+<section id="catalogue">
+  <div class="catalogue-container">
+    <div class="section-head">
+      <p class="section-label">Nos Produits</p>
+      <h2 class="section-title">CATALOGUE COMPLET</h2>
+      <p class="section-sub">Parcourez notre sélection de matériaux de construction de haute qualité.</p>
+    </div>
+    <div class="cat-tabs" id="catTabs">
+      <button class="cat-tab active" onclick="filterCategory('all')" data-cat="all">Tout voir</button>
+    </div>
+    <div id="productsContainer">
+      <div class="skeleton-grid">
+        <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
+        <div class="skeleton-card"></div><div class="skeleton-card"></div><div class="skeleton-card"></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- À PROPOS -->
+<section id="apropos">
+  <div class="about-grid">
+    <div class="about-img-col">
+      <img class="about-img" src="https://images.unsplash.com/photo-1590846406792-0adc7f938f1d?w=900&q=80" alt="Matériaux de construction" loading="lazy" />
+      <div class="about-badge">40+<small>ANS D'EXPÉRIENCE</small></div>
+    </div>
+    <div class="about-text-col">
+      <p class="section-label">Notre Histoire</p>
+      <h2 class="section-title">BÂTIR L'ALGÉRIE,<br>UN PROJET À LA FOIS</h2>
+      <p class="section-sub">La qualité au service de votre ambition.</p>
+      <p>MOMACOB est une entreprise algérienne spécialisée dans la distribution de matériaux de construction pour les particuliers, artisans et entreprises du bâtiment. Nous mettons à votre disposition une gamme complète de produits sélectionnés rigoureusement pour leur solidité et leur durabilité.</p>
+      <div class="features-list">
+        <div class="feature-item"><div class="feature-icon">🏗️</div><div><h4>STOCK PERMANENT</h4><p>Approvisionnement continu pour ne jamais vous manquer en cours de chantier.</p></div></div>
+        <div class="feature-item"><div class="feature-icon">✅</div><div><h4>QUALITÉ CERTIFIÉE</h4><p>Tous nos produits répondent aux normes algériennes de construction.</p></div></div>
+        <div class="feature-item"><div class="feature-icon">🤝</div><div><h4>CONSEIL EXPERT</h4><p>Notre équipe vous accompagne dans le choix des meilleurs matériaux.</p></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-container">
+    <div class="section-head">
+      <p class="section-label">Nous Trouver</p>
+      <h2 class="section-title">CONTACTEZ-NOUS</h2>
+      <p class="section-sub">Notre équipe est disponible 6 jours sur 7 pour répondre à vos besoins.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-info-card">
+        <h3>INFORMATIONS</h3>
+        <div class="contact-row">
+          <div class="contact-icon">📞</div>
+          <div><h4>Téléphone</h4><a href="tel:0798883266">07 98 88 32 66</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📧</div>
+          <div><h4>Email</h4><a href="mailto:sarl.momacob@gmail.com">sarl.momacob@gmail.com</a></div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">🕐</div>
+          <div>
+            <h4>Heures d'ouverture</h4>
+            <p>Samedi – Jeudi : 08h00 – 17h00</p>
+            <p style="color:var(--accent-light);margin-top:4px;font-size:.85rem;">Fermé le Vendredi</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="contact-icon">📍</div>
+          <div><h4>Localisation</h4><p>Algérie</p></div>
+        </div>
+      </div>
+      <div class="contact-form-card">
+        <h3>ENVOYEZ UN MESSAGE</h3>
+        <div class="form-group">
+          <label>Votre Nom</label>
+          <input type="text" placeholder="Prénom et Nom" id="contactName" />
+        </div>
+        <div class="form-group">
+          <label>Téléphone</label>
+          <input type="tel" placeholder="07XX XX XX XX" id="contactPhone" />
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea placeholder="Décrivez votre besoin…" id="contactMsg"></textarea>
+        </div>
+        <button class="btn-primary" style="width:100%;border:none;" onclick="sendContactEmail()">📧 Envoyer par Email</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-logo">MOMA<span>COB</span></div>
+  <p class="footer-tagline">Matériaux de construction — Qualité & Confiance</p>
+  <ul class="footer-links">
+    <li><a href="#home">Accueil</a></li>
+    <li><a href="#catalogue">Catalogue</a></li>
+    <li><a href="#apropos">À Propos</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="mailto:sarl.momacob@gmail.com">Email</a></li>
+  </ul>
+  <div class="footer-divider"></div>
+  <p class="footer-copy">© 2026 SARL MOMACOB. Tous droits réservés. Algérie.</p>
+</footer>
+
+<!-- CART DRAWER -->
+<div class="cart-overlay" id="cartOverlay" onclick="closeCart()"></div>
+<div class="cart-drawer" id="cartDrawer">
+  <div class="cart-header">
+    <h2>🛒 MON PANIER</h2>
+    <button class="cart-close" onclick="closeCart()">✕</button>
+  </div>
+  <div class="cart-items" id="cartItems"></div>
+  <div class="cart-footer">
+    <div class="cart-total">
+      <span>Total estimé</span>
+      <strong id="cartTotal">0 DA</strong>
+    </div>
+    <button class="cart-order-btn" id="cartOrderBtn" onclick="openOrderModal()">CONFIRMER LA COMMANDE →</button>
+  </div>
+</div>
+
+<!-- ORDER MODAL -->
+<div class="modal-overlay" id="orderModal">
+  <div class="modal">
+    <div class="modal-header">
+      <h2>CONFIRMER LA COMMANDE</h2>
+      <button class="cart-close" onclick="closeOrderModal()">✕</button>
+    </div>
+    <div class="modal-body" id="modalBody"></div>
+  </div>
+</div>
+
+<!-- TOAST -->
+<div class="toast" id="toast"></div>
+
+<script>
+  /* ================================================================
+     ▼▼▼  CONFIGURATION — modifiez ces deux valeurs  ▼▼▼
+  ================================================================ */
+
+  // Clé API Resend — gratuit sur https://resend.com (3 000 emails/mois)
+  // Sur le plan gratuit l'expéditeur DOIT être onboarding@resend.dev
+  const WORKER_URL = 'https://momacob-worker.mohamed-mokaddem.workers.dev';
+
+  // URL publique de votre bucket Cloudflare R2
+  // Laissez tel quel pour utiliser les produits de démonstration
+  const R2_BUCKET_URL  = 'https://pub-8292686f04864e1cac2a3a5fd0f3f7a3.r2.dev';
+
+  /* ================================================================
+     CONSTANTES
+  ================================================================ */
+  const COMPANY_PHONE = '0798883266';
+
+  /* ================================================================
+     PRODUITS DE DÉMONSTRATION
+  ================================================================ */
+  const MOCK_ITEMS = [
+    { id:'brique-8',   name:'Brique 8 Trous',            category:'Blocs & Briques',        price:'50 DA',   available:'yes', image:'https://images.unsplash.com/photo-1587582345426-bf07f534b9b4?w=600&q=80' },
+    { id:'parpaing',   name:'Parpaing Creux 20×20×40',   category:'Blocs & Briques',        price:'75 DA',   available:'yes', image:'https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?w=600&q=80' },
+    { id:'ciment',     name:'Ciment Portland CEM II',     category:'Liants & Ciments',       price:'850 DA',  available:'yes', image:'https://images.unsplash.com/photo-1565116175418-edda6f7e6fca?w=600&q=80' },
+    { id:'sable',      name:'Sable de Construction (m³)', category:'Granulats',              price:'3500 DA', available:'yes', image:'https://images.unsplash.com/photo-1501854140801-50d01698950b?w=600&q=80' },
+    { id:'gravier',    name:'Gravier 20/40 (m³)',         category:'Granulats',              price:'4000 DA', available:'yes', image:'https://images.unsplash.com/photo-1560343787-64a7cf78c96c?w=600&q=80' },
+    { id:'fer-ha10',   name:'Fer à Béton HA10 (12m)',     category:'Acier & Ferraillage',    price:'1200 DA', available:'yes', image:'https://images.unsplash.com/photo-1618090584126-129cd1f3fbae?w=600&q=80' },
+    { id:'fer-ha12',   name:'Fer à Béton HA12 (12m)',     category:'Acier & Ferraillage',    price:'1600 DA', available:'yes', image:'https://images.unsplash.com/photo-1618090584126-129cd1f3fbae?w=600&q=80' },
+    { id:'tuile',      name:'Tuile Romane Rouge',         category:'Couverture & Toiture',   price:'35 DA',   available:'yes', image:'https://images.unsplash.com/photo-1513467535987-fd81bc7d62f8?w=600&q=80' },
+    { id:'placo',      name:'Plaque de Plâtre BA13',      category:'Cloisons & Isolation',   price:'650 DA',  available:'no',  image:'https://images.unsplash.com/photo-1574691250077-03a929faece5?w=600&q=80' },
+    { id:'colle',      name:'Colle Carrelage Flexible',   category:'Revêtements',            price:'1200 DA', available:'yes', image:'https://images.unsplash.com/photo-1589939705384-5185137a7f0f?w=600&q=80' },
+    { id:'enduit',     name:'Enduit de Façade Minéral',   category:'Enduits & Finitions',    price:'950 DA',  available:'yes', image:'https://images.unsplash.com/photo-1503708928676-1cb796a0891e?w=600&q=80' },
+    { id:'pvc100',     name:'Tuyau PVC Ø100 (4m)',        category:'Plomberie & Évacuation', price:'480 DA',  available:'yes', image:'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=600&q=80' },
+  ];
+
+  /* ================================================================
+     ÉTAT
+  ================================================================ */
+  let allProducts    = [];
+  let cart = (() => { try { return JSON.parse(localStorage.getItem('momacob_cart')) || []; } catch { return []; } })();
+  let activeCategory = 'all';
+
+  /* ================================================================
+     CHARGEMENT DES PRODUITS
+  ================================================================ */
+  async function loadProducts() {
+    try {
+      const res = await fetch(`${R2_BUCKET_URL}/catalog.json`);
+      if (!res.ok) throw new Error('catalog.json introuvable');
+      const items = await res.json();
+      allProducts = items.map(p => ({
+        ...p,
+        image: p.image?.startsWith('http') ? p.image : `${R2_BUCKET_URL}/${p.image}`
+      }));
+    } catch (e) {
+      console.warn('Utilisation des données de démonstration :', e.message);
+      allProducts = MOCK_ITEMS;
+    }
+    renderCategoryTabs();
+    renderProducts('all');
+  }
+
+  function getCategories() { return [...new Set(allProducts.map(p => p.category))]; }
+
+  function renderCategoryTabs() {
+    const tabs = document.getElementById('catTabs');
+    const existing = [...tabs.querySelectorAll('[data-cat]')].map(b => b.dataset.cat);
+    getCategories().forEach(cat => {
+      if (existing.includes(cat)) return;
+      const btn = document.createElement('button');
+      btn.className = 'cat-tab'; btn.dataset.cat = cat; btn.textContent = cat;
+      btn.onclick = () => filterCategory(cat);
+      tabs.appendChild(btn);
+    });
+  }
+
+  function filterCategory(cat) {
+    activeCategory = cat;
+    document.querySelectorAll('.cat-tab').forEach(t => t.classList.toggle('active', t.dataset.cat === cat));
+    renderProducts(cat);
+  }
+
+  function parsePriceDA(str) {
+    if (!str) return 1;
+    const n = parseFloat(String(str).replace(/[^\d.]/g, ''));
+    return isNaN(n) ? 1 : n;
+  }
+
+  function renderProducts(cat) {
+    const container = document.getElementById('productsContainer');
+    const list = cat === 'all' ? allProducts : allProducts.filter(p => p.category === cat);
+    if (!list.length) {
+      container.innerHTML = `<div class="catalogue-status"><h3>Aucun produit dans cette catégorie</h3><p>Revenez bientôt, notre stock est régulièrement mis à jour.</p></div>`;
+      return;
+    }
+    container.innerHTML = `<div class="products-grid">${list.map(productCardHTML).join('')}</div>`;
+  }
+
+  function productCardHTML(p) {
+    const ok = p.available === 'yes';
+    const price = parsePriceDA(p.price);
+    return `<div class="product-card">
+      <div class="product-img-wrap">
+        <img src="${p.image}" alt="${p.name}" loading="lazy"
+          onerror="this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=600&q=80'" />
+        <span class="product-category-badge">${p.category}</span>
+        ${!ok ? '<div class="unavailable-overlay">INDISPONIBLE</div>' : ''}
+      </div>
+      <div class="product-body">
+        <div class="product-name">${p.name}</div>
+        <div class="product-price">${price === 1 ? 'Prix sur demande' : p.price}</div>
+        <button class="product-add-btn" ${!ok ? 'disabled' : ''}
+          onclick='addToCart(${JSON.stringify(p).replace(/'/g,"&#39;")})'>
+          ${ok ? '+ AJOUTER AU PANIER' : 'INDISPONIBLE'}
+        </button>
+      </div>
+    </div>`;
+  }
+
+  /* ================================================================
+     PANIER
+  ================================================================ */
+  function addToCart(p) {
+    const ex = cart.find(i => i.id === p.id);
+    ex ? ex.qty++ : cart.push({ ...p, qty: 1 });
+    updateCartUI();
+    showToast(`✓ ${p.name} ajouté au panier`);
+  }
+
+  function removeFromCart(id) {
+    cart = cart.filter(i => i.id !== id);
+    updateCartUI(); renderCartItems();
+  }
+
+  function changeQty(id, d) {
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    item.qty += d;
+    if (item.qty <= 0) removeFromCart(id);
+    else { updateCartUI(); renderCartItems(); }
+  }
+
+  function setQty(id, val) {
+    const item = cart.find(i => i.id === id);
+    if (!item) return;
+    const n = parseInt(val, 10);
+    if (isNaN(n) || n <= 0) { removeFromCart(id); return; }
+    item.qty = n;
+    updateCartUI();
+  }
+
+  function cartTotal() { return cart.reduce((s, i) => s + parsePriceDA(i.price) * i.qty, 0); }
+
+  function updateCartUI() {
+    localStorage.setItem('momacob_cart', JSON.stringify(cart));
+    document.getElementById('cartBadge').textContent   = cart.length;
+    document.getElementById('cartTotal').textContent   = cartTotal().toLocaleString('fr-DZ') + ' DA';
+    document.getElementById('cartOrderBtn').disabled   = cart.length === 0;
+    renderCartItems();
+  }
+
+  function renderCartItems() {
+    const el = document.getElementById('cartItems');
+    if (!cart.length) {
+      el.innerHTML = `<div class="cart-empty">
+        <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 001.98 1.61h9.72a2 2 0 001.98-1.61L23 6H6"/></svg>
+        <p>Votre panier est vide.<br>Ajoutez des produits pour commencer.</p>
+      </div>`;
+      return;
+    }
+    el.innerHTML = cart.map(item => `
+      <div class="cart-item">
+        <img src="${item.image}" alt="${item.name}"
+          onerror="this.src='https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=300&q=70'" />
+        <div class="cart-item-info">
+          <h4>${item.name}</h4>
+          <p class="cat">${item.category}</p>
+          <div class="cart-item-controls">
+            <button class="qty-btn" onclick="changeQty('${item.id}',-1)">−</button>
+            <input type="number" min="1" value="${item.qty}"
+              style="width:92px;text-align:center;border:2px solid var(--wood-sand);border-radius:4px;padding:2px 4px;font-size:.9rem;font-weight:600;font-family:var(--font-body);background:var(--white);color:var(--text-dark);"
+              onchange="setQty('${item.id}', this.value)"
+              onclick="this.select()" />
+            <button class="qty-btn" onclick="changeQty('${item.id}',1)">+</button>
+          </div>
+        </div>
+        <div style="display:flex;flex-direction:column;align-items:flex-end;gap:4px;">
+          <span class="cart-item-price">${(parsePriceDA(item.price)*item.qty).toLocaleString('fr-DZ')} DA</span>
+          <button class="cart-item-remove" onclick="removeFromCart('${item.id}')" title="Supprimer">🗑</button>
+        </div>
+      </div>`).join('');
+  }
+
+  function openCart() {
+    document.getElementById('cartOverlay').classList.add('open');
+    document.getElementById('cartDrawer').classList.add('open');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeCart() {
+    document.getElementById('cartOverlay').classList.remove('open');
+    document.getElementById('cartDrawer').classList.remove('open');
+    document.body.style.overflow = '';
+  }
+
+  /* ================================================================
+     MODAL COMMANDE — formulaire
+  ================================================================ */
+  function openOrderModal() {
+    if (!cart.length) return;
+    closeCart();
+    document.getElementById('modalBody').innerHTML = buildOrderForm();
+    document.getElementById('orderModal').classList.add('open');
+  }
+
+  function closeOrderModal() {
+    document.getElementById('orderModal').classList.remove('open');
+  }
+
+  function buildOrderForm() {
+    const rows = cart.map(i =>
+      `<div class="modal-order-item"><span>${i.name} × ${i.qty}</span><span>${(parsePriceDA(i.price)*i.qty).toLocaleString('fr-DZ')} DA</span></div>`
+    ).join('');
+    return `
+      <p>Renseignez vos coordonnées — votre commande sera transmise automatiquement à notre équipe par email.</p>
+      <div class="modal-order-summary">
+        <h4>Récapitulatif</h4>${rows}
+        <div class="modal-total"><span>TOTAL ESTIMÉ</span><span>${cartTotal().toLocaleString('fr-DZ')} DA</span></div>
+      </div>
+      <div class="modal-form-group">
+        <label>Nom Complet *</label>
+        <input type="text" id="orderName" placeholder="Prénom et Nom" />
+      </div>
+      <div class="modal-form-group">
+        <label>Numéro de Téléphone *</label>
+        <input type="tel" id="orderPhone" placeholder="07XX XX XX XX" />
+      </div>
+      <div class="modal-form-group">
+        <label>Wilaya / Commune</label>
+        <input type="text" id="orderWilaya" placeholder="Ex: Alger, Oran, Constantine…" />
+      </div>
+      <div class="modal-form-group">
+        <label>Notes ou quantités précises</label>
+        <textarea id="orderNotes" placeholder="Précisez les quantités souhaitées ou toute autre information utile…"></textarea>
+      </div>
+      <div class="modal-actions">
+        <button class="btn-cancel" onclick="closeOrderModal()">Annuler</button>
+        <button class="btn-primary" onclick="submitOrder()">📧 ENVOYER LA COMMANDE</button>
+      </div>`;
+  }
+
+  /* ================================================================
+     ENVOI DE LA COMMANDE VIA RESEND
+  ================================================================ */
+  async function submitOrder() {
+    const name   = document.getElementById('orderName').value.trim();
+    const phone  = document.getElementById('orderPhone').value.trim();
+    const wilaya = (document.getElementById('orderWilaya')?.value || '').trim();
+    const notes  = (document.getElementById('orderNotes')?.value  || '').trim();
+
+    if (!name || !phone) { showToast('⚠ Veuillez renseigner votre nom et téléphone.'); return; }
+
+    // Spinner
+    document.getElementById('modalBody').innerHTML = `
+      <div class="sending-state">
+        <div class="send-spinner"></div>
+        <p>Envoi de votre commande en cours…</p>
+      </div>`;
+
+    const total    = cartTotal();
+    const dateStr  = new Date().toLocaleString('fr-DZ', { dateStyle:'long', timeStyle:'short' });
+    const orderRef = 'CMD-' + Date.now().toString(36).toUpperCase();
+
+    /* --- Version texte brut --- */
+    const textBody = [
+      `NOUVELLE COMMANDE MOMACOB — ${orderRef}`,
+      `Date : ${dateStr}`,
+      '',
+      'CLIENT',
+      `Nom    : ${name}`,
+      `Tél    : ${phone}`,
+      wilaya ? `Wilaya : ${wilaya}` : '',
+      notes  ? `Notes  : ${notes}`  : '',
+      '',
+      'ARTICLES COMMANDÉS',
+      ...cart.map(i => `  • ${i.name} × ${i.qty}  =  ${(parsePriceDA(i.price)*i.qty).toLocaleString('fr-DZ')} DA`),
+      '',
+      `TOTAL ESTIMÉ : ${total.toLocaleString('fr-DZ')} DA`,
+      '',
+      '---',
+      'Commande passée via le site MOMACOB',
+      `Appelez le client au ${phone} pour confirmer.`,
+    ].filter(Boolean).join('\n');
+
+    /* --- Version HTML riche --- */
+    const itemRows = cart.map(i => `
+      <tr>
+        <td style="padding:9px 14px;border-bottom:1px solid #e8d5b0;color:#1a0f08;">${i.name}</td>
+        <td style="padding:9px 14px;border-bottom:1px solid #e8d5b0;text-align:center;color:#4a2c14;">${i.qty}</td>
+        <td style="padding:9px 14px;border-bottom:1px solid #e8d5b0;text-align:right;font-weight:700;color:#d4541a;">${(parsePriceDA(i.price)*i.qty).toLocaleString('fr-DZ')} DA</td>
+      </tr>`).join('');
+
+    const htmlBody = `<!DOCTYPE html><html lang="fr"><head><meta charset="UTF-8"></head>
+<body style="margin:0;padding:0;background:#f5ead8;font-family:Arial,sans-serif;">
+<table width="100%" cellpadding="0" cellspacing="0" style="background:#f5ead8;padding:30px 10px;">
+<tr><td align="center">
+<table width="600" cellpadding="0" cellspacing="0" style="max-width:600px;width:100%;border-radius:10px;overflow:hidden;box-shadow:0 4px 24px rgba(59,35,20,.2);">
+
+  <tr><td style="background:#3b2314;padding:26px 32px;text-align:center;border-bottom:4px solid #c87941;">
+    <div style="font-size:26px;font-weight:900;color:#e8d5b0;letter-spacing:4px;">MOMACOB</div>
+    <div style="font-size:11px;color:#c87941;letter-spacing:3px;text-transform:uppercase;margin-top:5px;">Matériaux de Construction — Algérie</div>
+  </td></tr>
+
+  <tr><td style="background:#d4541a;padding:13px 32px;text-align:center;">
+    <span style="color:white;font-size:14px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">🛒 Nouvelle Commande — ${orderRef}</span>
+  </td></tr>
+
+  <tr><td style="background:#fdfaf6;padding:32px;">
+    <p style="margin:0 0 24px;font-size:13px;color:#8a6040;">${dateStr}</p>
+
+    <table width="100%" cellpadding="0" cellspacing="0" style="background:#fdf6ec;border:1px solid #e8d5b0;border-radius:8px;margin-bottom:24px;overflow:hidden;">
+      <tr><td colspan="2" style="padding:10px 16px;background:#3b2314;">
+        <span style="color:#c87941;font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;">Informations client</span>
+      </td></tr>
+      <tr>
+        <td style="padding:10px 16px;font-size:13px;color:#8a6040;width:110px;">Nom</td>
+        <td style="padding:10px 16px;font-size:14px;font-weight:700;color:#1a0f08;">${name}</td>
+      </tr>
+      <tr style="background:#f5ead8;">
+        <td style="padding:10px 16px;font-size:13px;color:#8a6040;">Téléphone</td>
+        <td style="padding:10px 16px;font-size:14px;font-weight:700;">
+          <a href="tel:${phone}" style="color:#d4541a;text-decoration:none;">${phone}</a>
+        </td>
+      </tr>
+      ${wilaya ? `<tr><td style="padding:10px 16px;font-size:13px;color:#8a6040;">Wilaya</td><td style="padding:10px 16px;font-size:14px;color:#1a0f08;">${wilaya}</td></tr>` : ''}
+      ${notes  ? `<tr style="background:#f5ead8;"><td style="padding:10px 16px;font-size:13px;color:#8a6040;vertical-align:top;">Notes</td><td style="padding:10px 16px;font-size:14px;color:#1a0f08;">${notes.replace(/\n/g,'<br>')}</td></tr>` : ''}
+    </table>
+
+    <table width="100%" cellpadding="0" cellspacing="0" style="border:1px solid #e8d5b0;border-radius:8px;overflow:hidden;margin-bottom:20px;">
+      <thead><tr style="background:#3b2314;">
+        <th style="padding:10px 14px;text-align:left;color:#e8d5b0;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;">Produit</th>
+        <th style="padding:10px 14px;text-align:center;color:#e8d5b0;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;">Qté</th>
+        <th style="padding:10px 14px;text-align:right;color:#e8d5b0;font-size:11px;letter-spacing:1.5px;text-transform:uppercase;font-weight:600;">Montant</th>
+      </tr></thead>
+      <tbody>${itemRows}</tbody>
+      <tfoot><tr style="background:#fdf6ec;">
+        <td colspan="2" style="padding:12px 14px;font-weight:700;font-size:14px;color:#3b2314;letter-spacing:1px;text-transform:uppercase;">TOTAL ESTIMÉ</td>
+        <td style="padding:12px 14px;font-weight:700;font-size:17px;color:#d4541a;text-align:right;">${total.toLocaleString('fr-DZ')} DA</td>
+      </tr></tfoot>
+    </table>
+
+    <div style="text-align:center;margin-top:24px;">
+      <a href="tel:${phone}" style="display:inline-block;background:#d4541a;color:white;padding:14px 32px;border-radius:6px;text-decoration:none;font-weight:700;font-size:15px;letter-spacing:2px;text-transform:uppercase;">
+        📞 Appeler le client
+      </a>
+    </div>
+  </td></tr>
+
+  <tr><td style="background:#200e05;padding:18px 32px;text-align:center;border-top:3px solid #c87941;">
+    <p style="margin:0;font-size:12px;color:#6b3a1f;">SARL MOMACOB &nbsp;|&nbsp;
+      <a href="mailto:sarl.momacob@gmail.com" style="color:#c87941;text-decoration:none;">sarl.momacob@gmail.com</a>
+      &nbsp;|&nbsp;
+      <a href="tel:0798883266" style="color:#c87941;text-decoration:none;">07 98 88 32 66</a>
+    </p>
+    <p style="margin:5px 0 0;font-size:11px;color:#3b2314;">Commande reçue via le site MOMACOB</p>
+  </td></tr>
+
+</table>
+</td></tr></table>
+</body></html>`;
+
+    /* --- Appel Resend API --- */
+    try {
+      const res = await fetch(`${WORKER_URL}/order`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          ref:      orderRef,
+          total:    cartTotal(),
+          customer: { name, phone, wilaya, notes },
+          items:    cart,
+        })
+      });
+
+      if (!res.ok) {
+        const err = await res.json().catch(() => ({}));
+        throw new Error(err.message || `HTTP ${res.status}`);
+      }
+
+      /* SUCCÈS */
+      document.getElementById('modalBody').innerHTML = `
+        <div class="order-success">
+          <div class="success-icon">✅</div>
+          <h3>COMMANDE ENVOYÉE !</h3>
+          <p>Merci <strong>${name}</strong> ! Votre commande <strong>${orderRef}</strong> a bien été transmise à notre équipe.</p>
+          <div class="detail-box">
+            📧 Un email complet a été envoyé à notre service commercial.<br>
+            📞 Nous vous contacterons au <strong>${phone}</strong> pour confirmer et organiser la livraison.
+          </div>
+          <a href="tel:${COMPANY_PHONE}" class="call-btn">📞 Appeler maintenant pour accélérer</a>
+          <br><br>
+          <button onclick="closeOrderModal(); cart = []; localStorage.removeItem('momacob_cart'); updateCartUI();""
+            style="background:none;border:none;color:var(--text-light);cursor:pointer;font-size:.85rem;text-decoration:underline;">
+            Fermer et vider le panier
+          </button>
+        </div>`;
+
+    } catch (err) {
+      const noKey = err.message === 'KEY_NOT_SET';
+      document.getElementById('modalBody').innerHTML = `
+        <div class="order-error">
+          <div class="error-icon">${noKey ? '🔑' : '❌'}</div>
+          <h3>${noKey ? 'CLÉ API MANQUANTE' : "ERREUR D'ENVOI"}</h3>
+          <p>${noKey
+            ? "La clé API Resend n'est pas encore configurée dans index.html."
+            : `L'email n'a pas pu être envoyé. Erreur : <em>${err.message}</em>`
+          }</p>
+          <div class="error-note">
+            ${noKey
+              ? `<strong>Comment configurer :</strong><br>
+                 1. Créez un compte gratuit sur <a href="https://resend.com" target="_blank" style="color:#7a5c00;">resend.com</a><br>
+                 2. Copiez votre clé API (commence par <code>re_</code>)<br>
+                 3. Remplacez <code>YOUR_RESEND_API_KEY</code> dans index.html<br>
+                 4. Sur le plan gratuit, l'expéditeur doit rester <code>onboarding@resend.dev</code>`
+              : `<strong>Vérifiez :</strong><br>
+                 • La clé API commence bien par <code>re_</code><br>
+                 • Vous n'avez pas dépassé 3 000 emails/mois (plan gratuit)<br>
+                 • Le domaine expéditeur est vérifié sur Resend`
+            }
+          </div>
+          <br>
+          <p style="font-size:.85rem;color:var(--text-mid);">En attendant, appelez-nous directement :</p>
+          <a href="tel:${COMPANY_PHONE}" class="call-btn">📞 07 98 88 32 66</a>
+          <br><br>
+          <button onclick="document.getElementById('modalBody').innerHTML=buildOrderForm();"
+            style="background:none;border:none;color:var(--text-light);cursor:pointer;font-size:.85rem;text-decoration:underline;">
+            ← Retour au formulaire
+          </button>
+        </div>`;
+    }
+  }
+
+  /* ================================================================
+     FORMULAIRE CONTACT — envoi par email
+  ================================================================ */
+  async function sendContactEmail() {
+    const name  = document.getElementById('contactName').value.trim();
+    const phone = document.getElementById('contactPhone').value.trim();
+    const msg   = document.getElementById('contactMsg').value.trim();
+
+    if (!name && !msg) { showToast('⚠ Veuillez remplir le formulaire.'); return; }
+
+    try {
+      const res = await fetch(`${WORKER_URL}/contact`, {
+        method:  'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ name, phone, message: msg }),
+      });
+      if (!res.ok) throw new Error();
+      showToast('✅ Message envoyé avec succès !');
+      document.getElementById('contactName').value  = '';
+      document.getElementById('contactPhone').value = '';
+      document.getElementById('contactMsg').value   = '';
+    } catch {
+      showToast('❌ Erreur envoi. Appelez-nous directement.');
+    }
+  }
+
+  /* ================================================================
+     TOAST
+  ================================================================ */
+  let toastTimer;
+  function showToast(msg) {
+    const t = document.getElementById('toast');
+    t.textContent = msg; t.classList.add('show');
+    clearTimeout(toastTimer);
+    toastTimer = setTimeout(() => t.classList.remove('show'), 3500);
+  }
+
+  /* ================================================================
+     NAVIGATION MOBILE
+  ================================================================ */
+  function toggleMobileNav() { document.getElementById('navLinks').classList.toggle('mobile-open'); }
+
+  /* ================================================================
+     INITIALISATION
+  ================================================================ */
+  document.addEventListener('DOMContentLoaded', () => {
+    loadProducts();
+    updateCartUI();
+    document.querySelectorAll('#navLinks a').forEach(a =>
+      a.addEventListener('click', () => document.getElementById('navLinks').classList.remove('mobile-open'))
+    );
+  });
+</script>
+</body>
+</html>

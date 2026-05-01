@@ -1,0 +1,402 @@
+[
+  {
+    "id": "brique-8-trous",
+    "name": "Brique 8 Trous",
+    "category": "Blocs & Briques",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "brique-8-trous/brique.jpg"
+  },
+  {
+    "id": "brique-3-trous",
+    "name": "Brique 3 Trous",
+    "category": "Blocs & Briques",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "brique-3-trous/brique.jpg"
+  },
+  {
+    "id": "brique-5-trous",
+    "name": "Brique 5 Trous",
+    "category": "Blocs & Briques",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "brique-5-trous/brique.jpg"
+  },
+  {
+    "id": "brique-9-trous",
+    "name": "Brique 9 Trous",
+    "category": "Blocs & Briques",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "brique-9-trous/brique.jpg"
+  },
+  {
+    "id": "tuiles",
+    "name": "Tuiles",
+    "category": "Blocs & Briques",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "tuiles/tuiles.jpg"
+  },
+  {
+    "id": "faitieres",
+    "name": "Faitières",
+    "category": "Blocs & Briques",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "faitieres/tuiles.jpg"
+  },
+  {
+    "id": "sable-bousaada",
+    "name": "Sable Bousaada",
+    "category": "Agrégats",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "sable-bousaada/sable.jpg"
+  },
+  {
+    "id": "sable-oued-souf",
+    "name": "Sable Bousaada",
+    "category": "Agrégats",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "sable-oued-souf/sable.jpg"
+  },
+  {
+    "id": "sable-carriere-o3",
+    "name": "Sable Carriere 03",
+    "category": "Agrégats",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "sable-carriere-o3/sable.jpg"
+  },
+  {
+    "id": "gravier-8-15",
+    "name": "Gravier 8/15",
+    "category": "Agrégats",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "gravier-8-15/gravier.jpg"
+  },
+  {
+    "id": "gravier-3-8",
+    "name": "Gravier 3/8",
+    "category": "Agrégats",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "gravier-3-8/gravier.jpg"
+  },
+  {
+    "id": "fer-a-beton",
+    "name": "Fer à béton (différents diamètres)",
+    "category": "Aciers",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "fer-a-beton/ferronnerie.jpg"
+  },
+  {
+    "id": "cornieres",
+    "name": "cornières (toutes dimensions)",
+    "category": "Aciers",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "cornieres/ferronnerie.jpg"
+  },
+  {
+    "id": "tubes-carres",
+    "name": "Tubes carres",
+    "category": "Aciers",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "tubes-carres/ferronnerie.jpg"
+  },
+  {
+    "id": "tubes-ronds",
+    "name": "Tubes ronds",
+    "category": "Aciers",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "tubes-ronds/ferronnerie.jpg"
+  },
+  {
+    "id": "tubes-rectangles",
+    "name": "Tubes rectangles",
+    "category": "Aciers",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "tubes-rectangles/ferronnerie.jpg"
+  },
+  {
+    "id": "fer-carre",
+    "name": "Fer carre",
+    "category": "Aciers",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "fer-carre/ferronnerie.jpg"
+  },
+  {
+    "id": "fer-rond",
+    "name": "Fer rond",
+    "category": "Aciers",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "fer-rond/ferronnerie.jpg"
+  },
+  {
+    "id": "planches",
+    "name": "Planches (toutes dimensions)",
+    "category": "coffrage",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "planches/boisblanc.png"
+  },
+    {
+    "id": "madriers",
+    "name": "Madriers (toutes dimensions)",
+    "category": "coffrage",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "madriers/boisblanc.png"
+  },
+   {
+    "id": "demi-madriers",
+    "name": "Demi-Madriers (toutes dimensions)",
+    "category": "coffrage",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "demi-madriers/boisblanc.png"
+  },
+   {
+    "id": "chevron",
+    "name": "Chevron (toutes dimensions)",
+    "category": "coffrage",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "chevron/boisblanc.png"
+  },
+   {
+    "id": "Liteau",
+    "name": "Liteau (toutes dimensions)",
+    "category": "coffrage",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "liteau/boisblanc.png"
+  },
+   {
+    "id": "fenetres",
+    "name": "Fenêtres (différentes dimensions)",
+    "category": "coffrage",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "fenetres/boiserie.jpg"
+  },
+  {
+    "id": "portes-contre-plaquee",
+    "name": "Portes contre-plaquee (différentes dimensions)",
+    "category": "coffrage",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "portes-contre-plaquee/boiserie.jpg"
+  },
+  {
+    "id": "vasistas",
+    "name": "Vasistas (différentes dimensions)",
+    "category": "coffrage",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "vasistas/boiserie.jpg"
+  },
+    {
+    "id": "rouleau-pax",
+    "name": "Rouleau Pax (30, 40)",
+    "category": "coffrage",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "rouleau-pax/etanchiete.jpg"
+  },
+      {
+    "id": "rouleau-feutre",
+    "name": "Rouleau Feutre (30, 40)",
+    "category": "coffrage",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "rouleau-feutre/etanchiete.jpg"
+  },
+      {
+    "id": "bitume",
+    "name": "Bitume",
+    "category": "coffrage",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "bitume/etanchiete.jpg"
+  },
+      {
+    "id": "flinkot",
+    "name": "Flinkot",
+    "category": "coffrage",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "flinkot/etanchiete.jpg"
+  },
+        {
+    "id": "ciment-lafarge-chamil",
+    "name": "Ciment Lafarge Chamil (25 et 50 kg)",
+    "category": "poudre",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "ciment-lafarge-chamil/ciment_lafarge.jpg"
+  },
+   {
+    "id": "ciment-lafarge-matine",
+    "name": "Ciment Lafarge Matine (25 et 50 kg)",
+    "category": "poudre",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "ciment-lafarge-matine/ciment_lafarge.jpg"
+  },
+     {
+    "id": "ciment-prompt",
+    "name": "Ciment prompt Vicat (25 kg)",
+    "category": "poudre",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "ciment-prompt/ciment.jpeg"
+  },
+       {
+    "id": "ciment-blanc",
+    "name": "Ciment blanc (25 et 50 kg)",
+    "category": "poudre",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "ciment-blanc/ciment.jpeg"
+  },
+       {
+    "id": "ciment-colle",
+    "name": "Ciment colle (25 kg; toutes marques)",
+    "category": "poudre",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "ciment-colle/ciment.jpeg"
+  },
+    {
+    "id": "platre-fleurus",
+    "name": "Platre fleurus",
+    "category": "poudre",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "platre-fleurus/platre.jpg"
+  },
+     {
+    "id": "platre-ajiba",
+    "name": "Platre AJIBA",
+    "category": "poudre",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "platre-ajiba/platre.jpg"
+  },
+     {
+    "id": "roseaux",
+    "name": "Roseaux",
+    "category": "poudre",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "roseaux/platre.jpg"
+  },
+    {
+    "id": "variete-faiences-dalle-de-sol",
+    "name": "Variété de faiences et dalle de sol (différentes couleurs)",
+    "category": "ceramique",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "variete-faiences-dalle-de-sol/ceramique.jpg"
+  },
+   {
+    "id": "plinthes",
+    "name": "Plinthes (différentes couleurs)",
+    "category": "ceramique",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "plinthes/ceramique.jpg"
+  },
+   {
+    "id": "siphons-cours",
+    "name": "Siphons de Cours (différents diamètres)",
+    "category": "sanitaire",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "siphons-cours/siphon.jpeg"
+  },
+   {
+    "id": "tuyaux-pvc",
+    "name": "Tuyaux PVC (différents diamètres)",
+    "category": "sanitaire",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "tuyaux-pvc/pvc_tuyaux.jpg"
+  },
+     {
+    "id": "colle-pvc",
+    "name": "Colle PVC",
+    "category": "sanitaire",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "colle-pvc/pvc_tuyaux.jpg"
+  },
+     {
+    "id": "accessoires-pvc",
+    "name": "Accessoires PVC",
+    "category": "sanitaire",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "accessoires-pvc/pvc_tuyaux.jpg"
+  },
+  {
+    "id": "cuvettes-anglaises",
+    "name": "Cuvettes anglaises",
+    "category": "sanitaire",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "cuvettes-anglaises/sanitaires.jpeg"
+  },
+  {
+    "id": "cuvettes-turques",
+    "name": "Cuvettes turques",
+    "category": "sanitaire",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "cuvettes-turques/sanitaires.jpeg"
+  },
+  {
+    "id": "lavabo-pieds",
+    "name": "Lavabo et pieds",
+    "category": "sanitaire",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "lavabo-et-pieds/sanitaires.jpeg"
+  },
+   {
+    "id": "lave-main",
+    "name": "Lave main",
+    "category": "sanitaire",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "lave-main/sanitaires.jpeg"
+  },
+   {
+    "id": "receveur-douche",
+    "name": "Receveur de douche",
+    "category": "sanitaire",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "receveur-douche/sanitaires.jpeg"
+  },
+  {
+    "id": "eviers-cuisine",
+    "name": "Eviers de cuisine",
+    "category": "sanitaire",
+    "price": "1 DA",
+    "available": "yes",
+    "image": "eviers-cuisine/sanitaires.jpeg"
+  }
+]
